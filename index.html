@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sishu Mangal Parsat - School Appreciation Certificate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;600;700&family=Great+Vibes&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        :root {
+            --color-beige-200: #FBF8F1;
+            --color-gold-main: #B8860B;
+            --color-gold-light: #DAA520;
+            --color-gold-dark: #8B4513;
+            --color-maroon-700: #800000;
+            --color-light-gold-bg: #FDF8E1;
+            --color-dark-maroon: #5C0000;
+        }
+
+        .text-gold-main { color: var(--color-gold-main); }
+        .text-gold-light { color: var(--color-gold-light); }
+        .text-maroon-700 { color: var(--color-maroon-700); }
+        .text-dark-maroon { color: var(--color-dark-maroon); }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Fixed aspect ratio container tailored for standard A4 Landscape (1122px x 793px) */
+        .certificate-container {
+            width: 900px;
+            height: 636px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            position: relative;
+            background-color: var(--color-beige-200);
+            flex-shrink: 0;
+        }
+
+        .certificate-outer-border {
+            border: 4px solid var(--color-gold-main);
+            padding: 5px;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .certificate-inner-border {
+            border: 1.5px solid var(--color-maroon-700);
+            padding: 24px 36px;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* Watermark */
+        .watermark-img-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .watermark-img {
+            width: 38%;
+            height: auto;
+            opacity: 0.08;
+            object-fit: contain;
+        }
+
+        .content-layer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            text-align: center;
+        }
+
+        /* Typography */
+        .cert-header-org {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            color: #1a1a1a;
+            text-transform: uppercase;
+        }
+
+        .cert-header-sub {
+            font-family: 'Lora', serif;
+            font-size: 0.88rem;
+            font-style: italic;
+            color: #555;
+            margin-top: 2px;
+        }
+
+        .cert-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--color-maroon-700);
+            margin-top: 10px;
+            margin-bottom: 2px;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.05);
+        }
+
+        .cert-presentation-text {
+            font-family: 'Lora', serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #666;
+            letter-spacing: 0.04em;
+        }
+
+        .school-name-container {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 6px auto;
+            max-width: 85%;
+        }
+
+        .school-name-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-dark-maroon);
+            border-bottom: 2px solid var(--color-gold-main);
+            padding: 0 16px 2px 16px;
+            display: inline-block;
+            max-width: 100%;
+            word-break: break-word;
+        }
+
+        .cert-body-text {
+            font-family: 'Lora', serif;
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: #333;
+            max-width: 88%;
+            margin: 0 auto;
+        }
+
+        .signature-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.55rem;
+            font-weight: 400;
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+
+        .signature-detail {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+
+        /* Form UI elements */
+        .input-group { @apply mb-4; }
+        .input-group label { @apply block text-gray-700 text-sm font-bold mb-2; }
+        .input-group input { @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500; }
+        .btn-primary { @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded focus:outline-none transition duration-200 ease-in-out; }
+        .btn-secondary { @apply bg-gray-600 hover:bg-gray-700 text-white font-bold py-2.5 px-4 rounded focus:outline-none transition duration-200 ease-in-out; }
+
+        @media print {
+            .input-section-container { display: none !important; }
+            body { padding: 0 !important; margin: 0 !important; background: white !important; }
+            .certificate-container { box-shadow: none !important; }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <div class="input-section-container bg-white p-6 rounded-xl shadow-md mb-8 w-full max-w-lg">
+        <h2 class="text-xl font-bold text-center mb-4 text-gray-800">Generate School Appreciation Certificate</h2>
+        <div class="input-group">
+            <label for="schoolNameInput">Participating School Name:</label>
+            <input type="text" id="schoolNameInput" placeholder="e.g. Krishnagar Collegiate School" autofocus>
+        </div>
+        <button id="generatePdfBtn" class="btn-primary w-full mb-2">Download Landscape PDF</button>
+        <button id="downloadImageBtn" class="btn-secondary w-full">Download High-Res Image</button>
+    </div>
+
+    <div id="certificateFrame" class="certificate-container rounded-lg shadow-2xl">
+        <div class="certificate-outer-border">
+            <div class="certificate-inner-border">
+                
+                <div class="watermark-img-container">
+                    <img src="https://highondettol.github.io/sishu-mangal-jubilee/logo.jpg"
+                         alt="Logo Watermark"
+                         class="watermark-img"
+                         onerror="this.style.display='none';">
+                </div>
+
+                <div class="content-layer">
+                    
+                    <div>
+                        <p class="cert-header-org">Sishu Mangal Parsat</p>
+                        <p class="cert-header-sub">Celebrating 51 Years of Educational Excellence (1975 – 2026)</p>
+                        <h1 class="cert-title">Certificate of Appreciation</h1>
+                        <p class="cert-presentation-text">PROUDLY PRESENTED TO</p>
+                    </div>
+
+                    <div class="school-name-container">
+                        <span id="schoolNamePlaceholder" class="school-name-text"></span>
+                    </div>
+
+                    <div class="cert-body-text">
+                        <p>
+                            in sincere recognition and appreciation for their enthusiastic participation and valuable contribution towards making our <strong>Annual Day Celebration</strong> a grand success, held on <strong>31st August</strong> at Rabindra Bhavan, Krishnagar.
+                        </p>
+                    </div>
+
+                    <div class="flex justify-between items-end w-full px-8 pt-4">
+                        <div class="text-center">
+                            <p class="signature-name text-gray-900">Menoka Paul Chowdhury</p>
+                            <div class="w-36 h-0.5 bg-gray-400 mx-auto my-1"></div>
+                            <p class="signature-detail font-semibold text-gray-800">Vice President</p>
+                            <p class="signature-detail text-gray-600">Sishu Mangal Parsat</p>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div class="w-14 h-14 rounded-full border-2 border-yellow-700 bg-amber-50 flex items-center justify-center shadow-inner">
+                                <span class="text-xs font-bold text-yellow-800 text-center leading-tight">51st<br>YEAR</span>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="signature-name text-gray-900">Pallab Kanti Saha</p>
+                            <div class="w-36 h-0.5 bg-gray-400 mx-auto my-1"></div>
+                            <p class="signature-detail font-semibold text-gray-800">Secretary</p>
+                            <p class="signature-detail text-gray-600">Sishu Mangal Parsat</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const schoolNameInput = document.getElementById('schoolNameInput');
+        const generatePdfBtn = document.getElementById('generatePdfBtn');
+        const downloadImageBtn = document.getElementById('downloadImageBtn');
+        const schoolNamePlaceholder = document.getElementById('schoolNamePlaceholder');
+        const certificateFrame = document.getElementById('certificateFrame');
+
+        function updateCertificateContent() {
+            const rawName = schoolNameInput.value.trim();
+            const name = rawName || "........................................................................";
+            schoolNamePlaceholder.textContent = name;
+
+            // Dynamic font sizing based on length of the school name
+            if (rawName.length > 50) {
+                schoolNamePlaceholder.style.fontSize = "1.1rem";
+            } else if (rawName.length > 32) {
+                schoolNamePlaceholder.style.fontSize = "1.3rem";
+            } else {
+                schoolNamePlaceholder.style.fontSize = "1.5rem";
+            }
+        }
+
+        schoolNameInput.addEventListener('input', updateCertificateContent);
+
+        // Landscape PDF Export
+        generatePdfBtn.addEventListener('click', () => {
+            updateCertificateContent();
+            const filenameTarget = schoolNameInput.value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'School';
+
+            const options = {
+                margin: 0,
+                filename: `Sishu_Mangal_Parsat_Certificate_${filenameTarget}.pdf`,
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { 
+                    scale: 3, 
+                    useCORS: true, 
+                    logging: false,
+                    scrollX: 0,
+                    scrollY: 0,
+                    windowWidth: document.documentElement.offsetWidth
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+            };
+
+            html2pdf().set(options).from(certificateFrame).save();
+        });
+
+        // High-Res Image Export
+        downloadImageBtn.addEventListener('click', () => {
+            updateCertificateContent();
+            const filenameTarget = schoolNameInput.value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'School';
+
+            html2canvas(certificateFrame, { 
+                scale: 3, 
+                useCORS: true,
+                scrollX: 0,
+                scrollY: 0 
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `Sishu_Mangal_Parsat_Certificate_${filenameTarget}.png`;
+                link.href = canvas.toDataURL('image/png', 1.0);
+                link.click();
+            });
+        });
+
+        window.addEventListener('load', updateCertificateContent);
+    </script>
+</body>
+</html>

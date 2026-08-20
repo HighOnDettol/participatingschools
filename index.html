@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sishu Mangal Parsat - Participation Memento</title>
+    <title>Sishu Mangal Parsat - School Memento</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -42,7 +42,7 @@
             box-sizing: border-box;
         }
 
-        /* Fixed aspect ratio card container tailored for A5 dimensions */
+        /* Fixed aspect ratio card container strictly tailored for A5 portrait dimensions */
         .invitation-container {
             width: 560px;
             height: 792px;
@@ -193,14 +193,14 @@
     <div class="input-section-container bg-white p-6 rounded-xl shadow-md mb-8 w-full max-w-md">
         <h2 class="text-xl font-bold text-center mb-4 text-gray-800">Generate School Memento</h2>
         <div class="input-group">
-            <label for="judgeNameInput">School / Institution Name:</label>
+            <label for="judgeNameInput">Participating School Name:</label>
             <input type="text" id="judgeNameInput" placeholder="e.g. Krishnagar Collegiate School" autofocus>
         </div>
-        <button id="generatePdfBtn" class="btn-primary w-full mb-2">Download A5 PDF</button>
+        <button id="generatePdfBtn" class="btn-primary w-full mb-2">Download A5 Portrait PDF</button>
         <button id="downloadImageBtn" class="btn-secondary w-full">Download High-Res Image</button>
     </div>
 
-    <!-- Invitation Card Container -->
+    <!-- Memento Container (Strict A5 Portrait Dimensions: 560px x 792px) -->
     <div id="invitationFrame" class="invitation-container rounded-xl shadow-2xl">
         <div class="invitation-inner-border rounded-lg">
             <div class="invitation-content-area">
@@ -216,7 +216,7 @@
                 <div class="content-layer">
                     <!-- Header -->
                     <div>
-                        <p class="invitation-title-main text-gold-main">Certificate of Appreciation</p>
+                        <p class="invitation-title-main text-gold-main">Memento of Participation</p>
                         <p class="invitation-title-main text-black">Sishu Mangal Parsat</p>
                         <p class="invitation-subtitle">Celebrating 51 Years of Educational Excellence</p>
 
@@ -225,25 +225,25 @@
                         </div>
                     </div>
 
-                    <!-- Invitation Body -->
+                    <!-- Body Content -->
                     <div class="invitation-text text-gray-800 px-3">
                         <p>
-                            Presented with heartfelt gratitude and appreciation to
+                            Presented with heartfelt gratitude and honor to
                         </p>
                         
-                        <!-- Dynamic School Name -->
+                        <!-- Dynamic Participating School Name -->
                         <div class="judge-name-container">
                             <span id="judgeNamePlaceholder" class="judge-name-text text-dark-maroon border-b-2 border-dark-maroon pb-0.5 px-3"></span>
                         </div>
 
                         <p class="mb-3">
-                            for their enthusiastic participation, exemplary spirit, and valuable contribution to our Annual Day Celebrations.
+                            for their enthusiastic participation and invaluable contribution towards making our 51st Annual Day celebration a grand success.
                         </p>
 
                         <!-- Event Details Box -->
                         <div class="bg-gray-50 py-2.5 px-4 rounded-lg border border-yellow-900/10 shadow-sm space-y-1">
                             <p class="text-maroon-700 font-bold text-sm">Date: 31st August</p>
-                            <p class="text-maroon-700 font-bold text-sm">Event: Annual Cultural & Literary Meet</p>
+                            <p class="text-maroon-700 font-bold text-sm">Event: Annual Day Competitions & Meet</p>
                             <p class="text-maroon-700 font-bold text-sm">Venue: Rabindra Bhavan, Krishnagar</p>
                         </div>
                     </div>
@@ -291,14 +291,14 @@
 
         judgeNameInput.addEventListener('input', updateInvitationContent);
 
-        // A5 PDF Export
+        // A5 Portrait PDF Export
         generatePdfBtn.addEventListener('click', () => {
             updateInvitationContent();
             const filenameTarget = judgeNameInput.value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'School_Memento';
 
             const options = {
                 margin: 0,
-                filename: `Sishu_Mangal_Parsat_Memento_${filenameTarget}.pdf`,
+                filename: `Sishu_Mangal_Parsat_School_Memento_${filenameTarget}.pdf`,
                 image: { type: 'jpeg', quality: 1 },
                 html2canvas: { 
                     scale: 3, 
@@ -322,11 +322,11 @@
             html2canvas(invitationFrame, { 
                 scale: 3, 
                 useCORS: true, 
-                scrollX: 0,
+                scrollX: 0, 
                 scrollY: 0 
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `Sishu_Mangal_Parsat_Memento_${filenameTarget}.png`;
+                link.download = `Sishu_Mangal_Parsat_School_Memento_${filenameTarget}.png`;
                 link.href = canvas.toDataURL('image/png', 1.0);
                 link.click();
             });

@@ -38,14 +38,14 @@
             justify-content: flex-start;
             align-items: center;
             min-height: 100vh;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             box-sizing: border-box;
         }
 
-        /* Fixed aspect ratio card container strictly tailored for A5 portrait dimensions */
+        /* Scaled precisely for A4 Portrait standard display (794px x 1123px) */
         .invitation-container {
-            width: 560px;
-            height: 792px;
+            width: 794px;
+            height: 1123px;
             box-sizing: border-box;
             display: flex;
             justify-content: center;
@@ -57,10 +57,10 @@
         }
 
         .invitation-inner-border {
-            border: 6px solid var(--color-gold-main);
-            padding: 14px;
-            width: calc(100% - 16px);
-            height: calc(100% - 16px);
+            border: 8px solid var(--color-gold-main);
+            padding: 20px;
+            width: calc(100% - 24px);
+            height: calc(100% - 24px);
             box-sizing: border-box;
             display: flex;
             justify-content: center;
@@ -70,11 +70,11 @@
 
         .invitation-content-area {
             background-color: #ffffff;
-            padding: 30px 26px;
-            border-radius: 4px;
+            padding: 48px 42px;
+            border-radius: 6px;
             text-align: center;
             position: relative;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
             width: 100%;
             height: 100%;
             display: flex;
@@ -96,10 +96,11 @@
             z-index: 0;
             pointer-events: none;
         }
+        
         .watermark-img {
-            width: 70%;
+            width: 65%;
             height: auto;
-            opacity: 0.09;
+            opacity: 0.08;
             object-fit: contain;
         }
 
@@ -112,43 +113,43 @@
             height: 100%;
         }
 
-        /* Typography & Layout */
+        /* Scaled Typography for A4 */
         .invitation-title-main {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.85rem;
-            letter-spacing: 0.04em;
-            line-height: 1.15;
+            font-size: 2.6rem;
+            letter-spacing: 0.03em;
+            line-height: 1.2;
         }
         
         .invitation-subtitle {
             font-family: 'Lora', serif;
             font-style: italic;
-            font-size: 0.92rem;
+            font-size: 1.3rem;
             color: #555;
-            margin-top: 4px;
-            margin-bottom: 6px;
+            margin-top: 8px;
+            margin-bottom: 12px;
         }
 
         .invitation-text {
             font-family: 'Lora', serif;
-            line-height: 1.55;
-            font-size: 1.02rem;
+            line-height: 1.7;
+            font-size: 1.4rem;
         }
 
         .judge-name-container {
-            min-height: 48px;
+            min-height: 64px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 6px 0;
+            margin: 16px 0;
         }
 
         .judge-name-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.85rem;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.25;
             word-break: break-word;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -158,16 +159,16 @@
 
         .signature-name {
             font-family: 'Great Vibes', cursive;
-            font-size: 1.45rem;
+            font-size: 2.1rem;
             font-weight: 400;
-            line-height: 1.1;
+            line-height: 1.2;
             white-space: nowrap;
         }
 
         .signature-detail {
             font-family: 'Playfair Display', serif;
-            font-size: 0.75rem;
-            line-height: 1.2;
+            font-size: 1rem;
+            line-height: 1.3;
             white-space: nowrap;
         }
 
@@ -190,17 +191,17 @@
 <body>
 
     <!-- Input Control Card -->
-    <div class="input-section-container bg-white p-6 rounded-xl shadow-md mb-8 w-full max-w-md">
-        <h2 class="text-xl font-bold text-center mb-4 text-gray-800">Generate School Memento</h2>
+    <div class="input-section-container bg-white p-6 rounded-xl shadow-md mb-8 w-full max-w-lg">
+        <h2 class="text-xl font-bold text-center mb-4 text-gray-800">Generate School Memento (A4)</h2>
         <div class="input-group">
             <label for="judgeNameInput">Participating School Name:</label>
             <input type="text" id="judgeNameInput" placeholder="e.g. Krishnagar Collegiate School" autofocus>
         </div>
-        <button id="generatePdfBtn" class="btn-primary w-full mb-2">Download A5 Portrait PDF</button>
+        <button id="generatePdfBtn" class="btn-primary w-full mb-2">Download A4 Portrait PDF</button>
         <button id="downloadImageBtn" class="btn-secondary w-full">Download High-Res Image</button>
     </div>
 
-    <!-- Memento Container (Strict A5 Portrait Dimensions: 560px x 792px) -->
+    <!-- Memento Container (A4 Portrait Dimensions: 794px x 1123px) -->
     <div id="invitationFrame" class="invitation-container rounded-xl shadow-2xl">
         <div class="invitation-inner-border rounded-lg">
             <div class="invitation-content-area">
@@ -215,41 +216,41 @@
 
                 <div class="content-layer">
                     <!-- Header -->
-                    <div>
+                    <div class="pt-2">
                         <p class="invitation-title-main text-gold-main">Memento of Participation</p>
-                        <p class="invitation-title-main text-black">Sishu Mangal Parsat</p>
+                        <p class="invitation-title-main text-black mt-1">Sishu Mangal Parsat</p>
                         <p class="invitation-subtitle">Celebrating 51 Years of Educational Excellence</p>
 
-                        <div class="inline-block bg-light-gold-bg text-gold-main px-5 py-1 rounded-full text-sm font-bold mt-1 mb-1 border border-yellow-900/10">
+                        <div class="inline-block bg-light-gold-bg text-gold-main px-7 py-1.5 rounded-full text-base font-bold mt-2 border border-yellow-900/15">
                             1975 – 2026
                         </div>
                     </div>
 
                     <!-- Body Content -->
-                    <div class="invitation-text text-gray-800 px-3">
+                    <div class="invitation-text text-gray-800 px-6 my-auto">
                         <p>
                             Presented with heartfelt gratitude and honor to
                         </p>
                         
                         <!-- Dynamic Participating School Name -->
                         <div class="judge-name-container">
-                            <span id="judgeNamePlaceholder" class="judge-name-text text-dark-maroon border-b-2 border-dark-maroon pb-0.5 px-3"></span>
+                            <span id="judgeNamePlaceholder" class="judge-name-text text-dark-maroon border-b-2 border-dark-maroon pb-1 px-4"></span>
                         </div>
 
-                        <p class="mb-3">
+                        <p class="mb-6">
                             for their enthusiastic participation and invaluable contribution towards making our 51st Annual Day celebration a grand success.
                         </p>
 
                         <!-- Event Details Box -->
-                        <div class="bg-gray-50 py-2.5 px-4 rounded-lg border border-yellow-900/10 shadow-sm space-y-1">
-                            <p class="text-maroon-700 font-bold text-sm">Date: 31st August</p>
-                            <p class="text-maroon-700 font-bold text-sm">Event: Annual Day Competitions & Meet</p>
-                            <p class="text-maroon-700 font-bold text-sm">Venue: Rabindra Bhavan, Krishnagar</p>
+                        <div class="bg-gray-50 py-3.5 px-6 rounded-xl border border-yellow-900/10 shadow-sm space-y-1.5 max-w-lg mx-auto">
+                            <p class="text-maroon-700 font-bold text-base">Date: 31st August</p>
+                            <p class="text-maroon-700 font-bold text-base">Event: Annual Day Competitions & Meet</p>
+                            <p class="text-maroon-700 font-bold text-base">Venue: Rabindra Bhavan, Krishnagar</p>
                         </div>
                     </div>
 
                     <!-- Signatures -->
-                    <div class="flex justify-between items-end w-full px-4 pt-2">
+                    <div class="flex justify-between items-end w-full px-8 pb-4">
                         <div class="text-left">
                             <p class="signature-name">Menoka Paul Chowdhury</p>
                             <p class="signature-detail font-semibold text-gray-800">Vice President</p>
@@ -279,19 +280,19 @@
             const name = rawName || "................................................";
             judgeNamePlaceholder.textContent = name;
 
-            // Auto-scale font sizes dynamically based on name length
+            // Auto-scale font sizes dynamically based on name length for A4 canvas
             if (rawName.length > 35) {
-                judgeNamePlaceholder.style.fontSize = "1.05rem";
+                judgeNamePlaceholder.style.fontSize = "1.45rem";
             } else if (rawName.length > 22) {
-                judgeNamePlaceholder.style.fontSize = "1.18rem";
+                judgeNamePlaceholder.style.fontSize = "1.65rem";
             } else {
-                judgeNamePlaceholder.style.fontSize = "1.3rem";
+                judgeNamePlaceholder.style.fontSize = "1.85rem";
             }
         }
 
         judgeNameInput.addEventListener('input', updateInvitationContent);
 
-        // A5 Portrait PDF Export
+        // A4 Portrait PDF Export
         generatePdfBtn.addEventListener('click', () => {
             updateInvitationContent();
             const filenameTarget = judgeNameInput.value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'School_Memento';
@@ -301,14 +302,14 @@
                 filename: `Sishu_Mangal_Parsat_School_Memento_${filenameTarget}.pdf`,
                 image: { type: 'jpeg', quality: 1 },
                 html2canvas: { 
-                    scale: 3, 
+                    scale: 2, 
                     useCORS: true, 
                     logging: false,
                     scrollX: 0,
                     scrollY: 0,
                     windowWidth: document.documentElement.offsetWidth
                 },
-                jsPDF: { unit: 'mm', format: 'a5', orientation: 'portrait' }
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
 
             html2pdf().set(options).from(invitationFrame).save();
@@ -320,7 +321,7 @@
             const filenameTarget = judgeNameInput.value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'School_Memento';
 
             html2canvas(invitationFrame, { 
-                scale: 3, 
+                scale: 2, 
                 useCORS: true, 
                 scrollX: 0, 
                 scrollY: 0 

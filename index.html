@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sishu Mangal Parsat - School Appreciation Certificate</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;600;700&family=Great+Vibes&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+    <title>Sishu Mangal Parsat - Participation Memento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @tailwind base;
@@ -42,8 +42,8 @@
             box-sizing: border-box;
         }
 
-        /* Fixed aspect ratio card container tailored for A5 portrait dimensions */
-        .certificate-container {
+        /* Fixed aspect ratio card container tailored for A5 dimensions */
+        .invitation-container {
             width: 560px;
             height: 792px;
             box-sizing: border-box;
@@ -56,7 +56,7 @@
             flex-shrink: 0;
         }
 
-        .certificate-inner-border {
+        .invitation-inner-border {
             border: 6px solid var(--color-gold-main);
             padding: 14px;
             width: calc(100% - 16px);
@@ -68,9 +68,9 @@
             background-color: var(--color-beige-200);
         }
 
-        .certificate-content-area {
+        .invitation-content-area {
             background-color: #ffffff;
-            padding: 28px 24px;
+            padding: 30px 26px;
             border-radius: 4px;
             text-align: center;
             position: relative;
@@ -112,51 +112,41 @@
             height: 100%;
         }
 
-        /* Typography & Layout Rules */
-        .certificate-header-org {
+        /* Typography & Layout */
+        .invitation-title-main {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.75rem;
+            font-size: 1.85rem;
             letter-spacing: 0.04em;
             line-height: 1.15;
         }
-
-        .certificate-title-main {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 1.55rem;
-            letter-spacing: 0.06em;
-            line-height: 1.2;
-            margin-top: 4px;
-        }
         
-        .certificate-subtitle {
+        .invitation-subtitle {
             font-family: 'Lora', serif;
             font-style: italic;
-            font-size: 0.90rem;
+            font-size: 0.92rem;
             color: #555;
-            margin-top: 3px;
+            margin-top: 4px;
             margin-bottom: 6px;
         }
 
-        .certificate-text {
+        .invitation-text {
             font-family: 'Lora', serif;
-            line-height: 1.5;
+            line-height: 1.55;
             font-size: 1.02rem;
         }
 
-        .school-name-container {
-            min-height: 52px;
-            max-height: 58px;
+        .judge-name-container {
+            min-height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 6px 0;
         }
 
-        .school-name-text {
+        .judge-name-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 700;
             line-height: 1.2;
             word-break: break-word;
@@ -191,7 +181,7 @@
         @media print {
             .input-section-container { display: none !important; }
             body { padding: 0 !important; margin: 0 !important; background: white !important; }
-            .certificate-container { box-shadow: none !important; }
+            .invitation-container { box-shadow: none !important; }
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -201,19 +191,19 @@
 
     <!-- Input Control Card -->
     <div class="input-section-container bg-white p-6 rounded-xl shadow-md mb-8 w-full max-w-md">
-        <h2 class="text-xl font-bold text-center mb-4 text-gray-800">Generate School Appreciation Certificate</h2>
+        <h2 class="text-xl font-bold text-center mb-4 text-gray-800">Generate School Memento</h2>
         <div class="input-group">
-            <label for="schoolNameInput">Participating School Name:</label>
-            <input type="text" id="schoolNameInput" placeholder="e.g. Krishnagar High School" autofocus>
+            <label for="judgeNameInput">School / Institution Name:</label>
+            <input type="text" id="judgeNameInput" placeholder="e.g. Krishnagar Collegiate School" autofocus>
         </div>
         <button id="generatePdfBtn" class="btn-primary w-full mb-2">Download A5 PDF</button>
         <button id="downloadImageBtn" class="btn-secondary w-full">Download High-Res Image</button>
     </div>
 
-    <!-- Certificate Container -->
-    <div id="certificateFrame" class="certificate-container rounded-xl shadow-2xl">
-        <div class="certificate-inner-border rounded-lg">
-            <div class="certificate-content-area">
+    <!-- Invitation Card Container -->
+    <div id="invitationFrame" class="invitation-container rounded-xl shadow-2xl">
+        <div class="invitation-inner-border rounded-lg">
+            <div class="invitation-content-area">
                 
                 <!-- Watermark -->
                 <div class="watermark-img-container">
@@ -226,34 +216,34 @@
                 <div class="content-layer">
                     <!-- Header -->
                     <div>
-                        <p class="certificate-header-org text-black">Sishu Mangal Parsat</p>
-                        <p class="certificate-title-main text-maroon-700">Certificate of Appreciation</p>
-                        <p class="certificate-subtitle">Celebrating 51 Years of Educational Excellence</p>
+                        <p class="invitation-title-main text-gold-main">Certificate of Appreciation</p>
+                        <p class="invitation-title-main text-black">Sishu Mangal Parsat</p>
+                        <p class="invitation-subtitle">Celebrating 51 Years of Educational Excellence</p>
 
-                        <div class="inline-block bg-light-gold-bg text-gold-main px-5 py-1 rounded-full text-sm font-bold mt-1 mb-2 border border-yellow-900/10">
+                        <div class="inline-block bg-light-gold-bg text-gold-main px-5 py-1 rounded-full text-sm font-bold mt-1 mb-1 border border-yellow-900/10">
                             1975 – 2026
                         </div>
                     </div>
 
-                    <!-- Certificate Body -->
-                    <div class="certificate-text text-gray-800 px-3">
-                        <p class="italic text-gray-600 text-sm mb-1 uppercase tracking-wider">
-                            This is proudly presented to
+                    <!-- Invitation Body -->
+                    <div class="invitation-text text-gray-800 px-3">
+                        <p>
+                            Presented with heartfelt gratitude and appreciation to
                         </p>
                         
-                        <!-- Name Placeholder with Dynamic Sizing -->
-                        <div class="school-name-container">
-                            <span id="schoolNamePlaceholder" class="school-name-text text-dark-maroon border-b-2 border-dark-maroon pb-0.5 px-2"></span>
+                        <!-- Dynamic School Name -->
+                        <div class="judge-name-container">
+                            <span id="judgeNamePlaceholder" class="judge-name-text text-dark-maroon border-b-2 border-dark-maroon pb-0.5 px-3"></span>
                         </div>
 
-                        <p class="mb-4">
-                            in sincere recognition and appreciation for their enthusiastic participation and invaluable contribution toward our Annual Day celebration.
+                        <p class="mb-3">
+                            for their enthusiastic participation, exemplary spirit, and valuable contribution to our Annual Day Celebrations.
                         </p>
 
                         <!-- Event Details Box -->
                         <div class="bg-gray-50 py-2.5 px-4 rounded-lg border border-yellow-900/10 shadow-sm space-y-1">
                             <p class="text-maroon-700 font-bold text-sm">Date: 31st August</p>
-                            <p class="text-maroon-700 font-bold text-sm">Event: Annual Day Celebration</p>
+                            <p class="text-maroon-700 font-bold text-sm">Event: Annual Cultural & Literary Meet</p>
                             <p class="text-maroon-700 font-bold text-sm">Venue: Rabindra Bhavan, Krishnagar</p>
                         </div>
                     </div>
@@ -278,37 +268,37 @@
     </div>
 
     <script>
-        const schoolNameInput = document.getElementById('schoolNameInput');
+        const judgeNameInput = document.getElementById('judgeNameInput');
         const generatePdfBtn = document.getElementById('generatePdfBtn');
         const downloadImageBtn = document.getElementById('downloadImageBtn');
-        const schoolNamePlaceholder = document.getElementById('schoolNamePlaceholder');
-        const certificateFrame = document.getElementById('certificateFrame');
+        const judgeNamePlaceholder = document.getElementById('judgeNamePlaceholder');
+        const invitationFrame = document.getElementById('invitationFrame');
 
-        function updateCertificateContent() {
-            const rawName = schoolNameInput.value.trim();
+        function updateInvitationContent() {
+            const rawName = judgeNameInput.value.trim();
             const name = rawName || "................................................";
-            schoolNamePlaceholder.textContent = name;
+            judgeNamePlaceholder.textContent = name;
 
-            // Auto-scale font sizes dynamically based on string length
-            if (rawName.length > 45) {
-                schoolNamePlaceholder.style.fontSize = "1.0rem";
-            } else if (rawName.length > 28) {
-                schoolNamePlaceholder.style.fontSize = "1.15rem";
+            // Auto-scale font sizes dynamically based on name length
+            if (rawName.length > 35) {
+                judgeNamePlaceholder.style.fontSize = "1.05rem";
+            } else if (rawName.length > 22) {
+                judgeNamePlaceholder.style.fontSize = "1.18rem";
             } else {
-                schoolNamePlaceholder.style.fontSize = "1.25rem";
+                judgeNamePlaceholder.style.fontSize = "1.3rem";
             }
         }
 
-        schoolNameInput.addEventListener('input', updateCertificateContent);
+        judgeNameInput.addEventListener('input', updateInvitationContent);
 
-        // Fixed PDF generation with strict A5 portrait dimensional mapping
+        // A5 PDF Export
         generatePdfBtn.addEventListener('click', () => {
-            updateCertificateContent();
-            const filenameTarget = schoolNameInput.value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'School';
+            updateInvitationContent();
+            const filenameTarget = judgeNameInput.value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'School_Memento';
 
             const options = {
                 margin: 0,
-                filename: `Sishu_Mangal_Parsat_School_Certificate_${filenameTarget}.pdf`,
+                filename: `Sishu_Mangal_Parsat_Memento_${filenameTarget}.pdf`,
                 image: { type: 'jpeg', quality: 1 },
                 html2canvas: { 
                     scale: 3, 
@@ -321,28 +311,28 @@
                 jsPDF: { unit: 'mm', format: 'a5', orientation: 'portrait' }
             };
 
-            html2pdf().set(options).from(certificateFrame).save();
+            html2pdf().set(options).from(invitationFrame).save();
         });
 
-        // Image Download
+        // High-Res Image Export
         downloadImageBtn.addEventListener('click', () => {
-            updateCertificateContent();
-            const filenameTarget = schoolNameInput.value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'School';
+            updateInvitationContent();
+            const filenameTarget = judgeNameInput.value.trim().replace(/[^a-zA-Z0-9]/g, '_') || 'School_Memento';
 
-            html2canvas(certificateFrame, { 
+            html2canvas(invitationFrame, { 
                 scale: 3, 
-                useCORS: true,
+                useCORS: true, 
                 scrollX: 0,
                 scrollY: 0 
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `Sishu_Mangal_Parsat_School_Certificate_${filenameTarget}.png`;
+                link.download = `Sishu_Mangal_Parsat_Memento_${filenameTarget}.png`;
                 link.href = canvas.toDataURL('image/png', 1.0);
                 link.click();
             });
         });
 
-        window.addEventListener('load', updateCertificateContent);
+        window.addEventListener('load', updateInvitationContent);
     </script>
 </body>
 </html>
